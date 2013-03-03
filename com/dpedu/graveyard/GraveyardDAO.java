@@ -61,7 +61,7 @@ public class GraveyardDAO {
 		} catch( SQLException e ) {
 			e.printStackTrace();
 		}
-		return true; // Default case
+		return false; // Default case
 	}
 	
 
