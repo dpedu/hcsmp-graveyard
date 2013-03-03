@@ -1,0 +1,4 @@
+name: Graveyard
+main: com.dpedu.graveyard.Graveyard
+version: 0.1
+commands: 
