@@ -51,13 +51,22 @@ public class GraveyardDAO {
 	 */
 	public boolean playerDead( String minecraftID )
 	{
-		if ( this._mysql == null ) return true;
+		if ( this._mysql == null ) {
+			return false;
+		}
 		try {
 			PreparedStatement s = this._mysql.prepareStatement( "SELECT `Status` FROM `player_status` WHERE `Username` = ? LIMIT 1" );
 			s.setString( 1, minecraftID );
 			ResultSet rs = s.executeQuery();
-			if ( !rs.last() ) return false;
-			if ( rs.getString( 1 ).equals( "Alive" ) ) return false;
+			if ( !rs.last() ) {
+				return false;
+			}
+			if ( rs.getString( 1 ).equals( "Alive" ) ) {
+				return false;
+			}
+			if ( rs.getString( 1 ).equals( "Dead" ) ) {
+				return true;
+			}
 		} catch( SQLException e ) {
 			e.printStackTrace();
 		}
